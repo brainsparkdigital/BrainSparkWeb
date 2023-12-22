@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        #portfolio h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .portfolio-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .portfolio-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item h3 {
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .portfolio-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .read-more:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2>Our Portfolio</h2>
+            <div class="portfolio-items">
+                {% for portfolio in object_list %}
+                    <div class="portfolio-item">
+                        <h3>{{ portfolio.title }}</h3>
+                        <!-- Rendering RichTextField content from CKEditor -->
+                        <p>{{ portfolio.body|safe }}</p>
+                        <a href="{{ portfolio.get_absolute_url }}" class="read-more">Read More</a>
+                    </div>
+                {% empty %}
+                    <p>No portfolio items found.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+
+{% endblock content %}
+
+

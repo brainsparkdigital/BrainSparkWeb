@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A full-service digital agency offering SEO, web development, digital marketing, and graphic design services.">
+    <meta name="keywords" content="SEO, web development, digital marketing, graphic design">
+    <meta name="author" content="Your Agency Name">
+    <title>BrainSpark - Full-Service Digital Agency</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Add your existing styles here */
+
+        /* Service detail section */
+        .service-detail {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .service-detail h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .service-detail-content {
+            display: flex;
+            justify-content: center;
+        }
+
+        .service-detail-info {
+            width: 60%;
+            text-align: left;
+        }
+
+        .service-detail-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-detail-info p {
+            font-size: 16px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .service-detail-image {
+            width: 40%;
+        }
+
+        .service-detail-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Add your remaining styles here */
+
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<!-- Your existing header code here -->
+
+<!-- Hero Section -->
+<!-- Your existing hero section code here -->
+
+<!-- Service Detail Section -->
+<section id="service-detail" class="service-detail">
+    {% if object %}
+    <h2>{{ object.name }}</h2>
+    <div class="service-detail-content">
+        <div class="service-detail-info">
+            <h3>Description</h3>
+            <p>{{ object.description }}</p>
+            <h3>Details</h3>
+            {{ object.detail | safe }}
+        </div>
+        {% comment %} <div class="service-detail-image">
+            <!-- Add your image tag here, replace 'service-image.jpg' with the actual image filename -->
+            <img src="service-image.jpg" alt="{{ object.name }}">
+        </div> {% endcomment %}
+    </div>
+    {% else %}
+    <p>Service not found.</p>
+    {% endif %}
+</section>
+
+<a href="{% url 'services' %}" class="btn btn-secondary mt-4">Back to Services</a>
+<!-- Your remaining sections here -->
+
+<!-- Footer -->
+<!-- Your existing footer code here -->
+
+</body>
+</html>
+{% endblock content %}
