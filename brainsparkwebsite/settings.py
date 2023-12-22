@@ -31,11 +31,13 @@ SECRET_KEY = env.str(
   default="django-insecure-^qi19(+(oo-ere5b&$@275chw)k@7ob1)74aol5d$(k*)5kk5)",
 )
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)  # new
 
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = env.bool("DEBUG", default=False)  # new
+DEBUG = True
 ALLOWED_HOSTS = ["*"]  
-CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]  
+# CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]  
 
 
 # Application definition
