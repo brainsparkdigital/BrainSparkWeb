@@ -32,8 +32,13 @@ def index(request):
                 'content': content,
             })
 
-            send_mail('Contact form submission', 'This is the message', 'noreply@z4hid.com', ['noreply@z4hid.com'], html_message=html)
-            return redirect('confirmation')  # Redirect to the confirmation page
+            try:
+                send_mail('Contact form submission', 'This is the message', 'noreply@z4hid.com', ['noreply@z4hid.com'], html_message=html)
+                return redirect('confirmed')  # Redirect to the confirmation page
+            except Exception as e:
+                print("Error sending email:", str(e))
+
+
 
     return render(request, 'contact.html', {'form': form})
 
