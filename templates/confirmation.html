@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+<link href='https://unpkg.com/css.gg@2.0.0/icons/css/lock-unlock.css' rel='stylesheet'>
+{% block content %}
+
+<style>
+
+.confirmation-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation-content img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+</style>    
+
+<div class="confirmation-container">
+    <div class="confirmation-content">
+        <i class="gg-lock-unlock"></i>
+        <!-- <img src="{% static 'success-icon.png' %}" alt="Success Icon"> -->
+        <h1>Thank You!</h1>
+        <p>Your message has been successfully submitted.</p>
+        <p>We will get back to you as soon as possible.</p>
+        <a href="{% url 'home' %}" class="btn">Go Back to Home</a>
+    </div>
+</div>
+
+{% endblock content %}

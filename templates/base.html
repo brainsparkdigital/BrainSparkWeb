@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,210 +10,135 @@
     <title>BrainSpark - Full-Service Digital Agency</title>
 
     <!-- Bootstrap CSS Link -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
     <style>
-        /* Custom CSS for additional styling */
         /* Reset some default styles */
         body, h1, h2, p, ul {
             margin: 0;
             padding: 0;
         }
 
-        /* Custom CSS for additional styling */
         /* Body Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             color: #666;
             line-height: 1.6;
         }
 
         /* Navbar Styles */
-        /* Overall Navbar Styles */
         .navbar {
-          background-color: #007bff; /* Primary blue color */
-          font-family: 'Arial', sans-serif; /* Change as needed */
+            background-color: #031A2D;
+            font-family: 'Arial', sans-serif;
         }
-        
+
         /* Logo Styles */
         .navbar-brand img {
-          height: 40px;
-          width: auto;
+            height: 60px;
+            width: auto;
         }
-        
+
         /* Navbar Link Styles */
-        .navbar-nav .nav-item .nav-link {
-          color: white;
-          padding: 10px 15px;
-          text-transform: uppercase; /* Optional: makes text uppercase */
+        .navbar-nav .nav-link {
+            color: white;
+            padding: 10px 15px;
+            text-transform: uppercase;
         }
-        
-        .navbar-nav .nav-item .nav-link:hover,
-        .navbar-nav .nav-item .nav-link:focus {
-          color: #ccc; /* Lighter color on hover/focus */
-          background-color: transparent;
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: #ccc;
+            background-color: transparent;
         }
-        
+
         /* Active Link Styles */
         .navbar-nav .nav-item.active .nav-link,
         .navbar-nav .nav-item .nav-link.active {
-          color: #ffd700; /* Gold color for active link */
-          background-color: transparent;
+            color: #ffd700;
+            background-color: transparent;
         }
-        
+
         /* Mobile View Toggler */
         .navbar-toggler {
-          border-color: rgba(255,255,255,0.1);
+            border-color: rgba(255, 255, 255, 0.1);
         }
-        
+
         .navbar-toggler-icon {
-          background-image: url("data:image/svg+xml, ..."); /* SVG or PNG icon */
+            background-image: url("data:image/svg+xml, ...");
         }
-        
+
         /* Media Query for responsiveness */
         @media (max-width: 992px) {
-          .navbar-collapse {
-            background-color: #007bff; /* Same as navbar color */
-          }
-        
-          .navbar-nav .nav-item .nav-link {
-            color: white; /* Mobile link color */
-          }
+            .navbar-collapse {
+                background-color: #031A2D;
+                position: fixed;
+                top: 56px; /* Adjust as needed */
+                right: 0;
+                left: 0;
+                z-index: 1030;
+            }
+
+            .navbar-nav .nav-link {
+                color: white;
+            }
         }
 
-        /* About Section Styles */
-        #about {
-            padding: 80px 0;
-        }
-
-        #about h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            padding: 1rem;
-        }
-
-        #about p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            padding: 0.5rem;
-        }
-
-        #about ul {
-            list-style: none;
-        }
-
-        #about ul li {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            padding: 0.5rem;
-        }
-
-        #about ul li strong {
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* Button Styles */
-        .btn-primary {
-            background-color: #007BFF;
-            border: none;
-            color: #fff;
-            font-weight: 600;
-            padding: 10px 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        /* Footer Styles */
+        /* Footer Section Styles */
         footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+            background-color: #031A2D;
+            color: white;
             text-align: center;
+            padding: 20px 0;
         }
 
-        footer p {
-            font-size: 0.9rem;
+        .list-inline-item {
+            margin-right: 10px;
         }
-
-        .list-inline-item a {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0 10px;
-        }
-
-        /* Media Queries for Responsive Design */
-        @media (max-width: 768px) {
-            #about h1 {
-                font-size: 2rem;
-            }
-
-            #about p,
-            #about ul li,
-            footer p {
-                font-size: 1rem;
-            }
-
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-        }
-
     </style>
-
-</head> 
+</head>
 <body>
 
 <!-- Header -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <!-- Logo (Replace 'agency-logo.png' with your logo's file path) -->
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{{ MEDIA_URL }}bsparklogo.jpg" alt="BrainSpark" style="height: 40px;">
-      </a>
-  
-      <!-- Toggler for Mobile View -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <!-- Navbar Links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a> </li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a> </li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
+        <!-- Logo -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'logo.jpg' %}" alt="BrainSpark">
+        </a>
+
+        <!-- Toggler for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </div>
     </div>
-  </nav>
-  
-    {% block content %} 
+</nav>
+
+{% block content %} 
     
-    
-    {% endblock content %}
- 
+{% endblock content %}
 
 <!-- Footer Section -->
-<footer class="bg-dark text-light py-3">
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -229,6 +155,7 @@
             </div>
         </div>
     </div>
-</footer>  
-  
-</body>   
+</footer>
+
+</body>
+</html>

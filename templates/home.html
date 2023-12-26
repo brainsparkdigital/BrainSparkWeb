@@ -1,16 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+
+<!-- Consolidated External CSS Links -->
+<link href='https://unpkg.com/css.gg@2.0.0/icons/css/website.css' rel='stylesheet'>
+<link href='https://unpkg.com/css.gg@2.0.0/icons/css/screen.css' rel='stylesheet'>
+
 <style>
     /* Hero section */
     .hero {
         text-align: center;
-        padding: 60px 0;
-        background: linear-gradient(to bottom, rgba(0, 86, 179, 0.7), rgba(0, 86, 179, 0.7)), url('hero-background.jpg') no-repeat center center;
+        padding: 160px 0;
+        background-image: url('{% static 'brainspark_banner_sample.jpg' %}');
         background-size: cover;
         color: white;
     }
 
-    .hero h1 {
+    .banner-content {
         font-size: 42px;
         margin-bottom: 25px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -22,18 +28,34 @@
     }
 
     .hero .cta-button {
-        background-color: #FFA500;
-        color: white;
-        padding: 12px 20px;
-        text-decoration: none;
-        display: inline-block;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
+            background-color: #4a8065;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 2px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-    .hero .cta-button:hover {
-        background-color: #e69500;
-        transform: translateY(-3px);
+        .hero .cta-button:hover {
+            background-color: #e69500;
+            transform: translateY(-3px);
+        }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .banner-content {
+            font-size: 36px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .cta-button {
+            padding: 12px 20px;
+            font-size: 16px;
+        }
     }
 
     /* Services section */
@@ -42,9 +64,15 @@
         padding: 60px 0;
         text-align: center;
         display: flex;
-        justify-content: center;
-        gap: 30px;
         flex-wrap: wrap;
+        justify-content: center; /* Center items horizontally */
+    }
+
+    .services h2 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 30px;
+        width: 100%; /* Make sure the heading spans the full width */
     }
 
     .service {
@@ -52,10 +80,11 @@
         color: white;
         width: 250px;
         padding: 20px;
+        margin: 0 20px 20px 0; /* Add margin between services */
         border: 2px solid #e0e0e0;
         border-radius: 10px;
         transition: transform 0.3s ease-in-out;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -78,30 +107,160 @@
     @media (max-width: 768px) {
         .service {
             width: 100%;
-            margin-bottom: 20px;
+            margin: 0 0 20px 0; /* Adjust margin for small screens */
         }
     }
 
+    /* About section */
+    .abouthome {
+        background-color: #e8e8e8;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .abouthome h2 {
+        font-size: 24px;
+        color: #333;
+    }
+
+    .abouthome p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+        /* Portfolio section */
+        #portfolio {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #portfolio h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-items {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-item {
+            width: 250px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .portfolio-item h3 {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .portfolio-item p {
+            font-size: 16px;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
 </style>
-    <!-- Hero Section -->
-    <section class="hero">
+
+<section class="hero">
+    <div class="banner-content">
         <h1>Welcome to BrainSpark</h1>
         <p>Your Partner in Digital Excellence</p>
-        <a href="#contact" class="cta-button">Get Started</a>
-    </section>
-<h2>Our Services</h2>
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="service">
-            <h3><a href="services/1">SEO</a></h3>
-            <p>Elevate your online visibility with our powerful SEO strategies.</p>
+        <a href="{% url 'contact' %}" class="cta-button">Book a Meeting</a>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service">
+        <i class="gg-screen"></i>
+        <h3><a href="services/1">SEO</a></h3>
+        <p>Elevate your online visibility with our powerful SEO strategies.</p>
+    </div>
+    <div class="service">
+        <i class="gg-website"></i>
+        <h3><a href="services/2">Web Development</a></h3>
+        <p>Transform your vision into reality with our expert web developers.</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="abouthome">
+    <h2>About BrainSpark</h2>
+    <p>Founded in 2023 with a spark of innovation, BrainSpark is your one-stop shop for all things digital. We're a passionate team of seasoned professionals, united by a mission: to empower businesses like yours to thrive in the ever-evolving online landscape.
+
+        We go beyond cookie-cutter solutions. We take the time to understand your unique needs, then craft tailored strategies that ignite growth and visibility. From SEO magic that puts you on the map to cutting-edge AI solutions and captivating graphic design, we have the tools and expertise to fuel your digital transformation.
+        
+        But it's not just about tech. At BrainSpark, we believe in building long-lasting relationships built on trust, transparency, and open collaboration. We're passionate about your success, and it shows in everything we do. We strive to exceed expectations, delivering quality work and exceptional customer service that leaves you smiling.
+        
+        Ready to leave your digital mark? Join us on this thrilling journey. BrainSpark is your dedicated partner, ready to ignite your potential and propel you towards a brighter, more successful future.
+        
+        Let's spark your digital transformation today!
+        
+        This paragraph captures the essence of BrainSpark, highlighting its mission, services, values, and dedication to customer success. It's concise, impactful, and leaves the reader wanting to learn more.
+    </p>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <h2>Explore Our Work</h2>
+    <p>Discover some of our recent projects that showcase our commitment to excellence.</p>
+    <div class="portfolio-items">
+        <div class="portfolio-item clickable" data-url="{% url 'portfolio_detail' slug='ai-chatbot' %}">
+            <!-- <img src="http://127.0.0.1:8000/media/media/images/chabtotdemo_2mu2coj.png" alt="Project A"> -->
+            <h3>AI Chatbot</h3>
+            <p>Introducing the AI Chatbot Portfolio Project—a fascinating journey into the realms of artificial intelligence (AI), natural language processing (NLP), and machine learning (ML).</p>
         </div>
-        <div class="service">
-            <h3><a href="services/2">Web Development</a></h3>
-            <p>Transform your vision into reality with our expert web developers.</p>
+        <div class="portfolio-item clickable" data-url="{% url 'portfolio_detail' slug='seo-project' %}">
+            <!-- <img src="portfolio-item2.jpg" alt="Project B"> -->
+            <h3>SEO Project</h3>
+            <p>Unlock the secrets of SEO with InsightLens, your indispensable analytics ally. Seamlessly translating complex data into actionable insights, it unveils the hidden dynamics propelling your website to search engine supremacy.</p>
         </div>
-    </section>  
+        <div class="portfolio-item clickable" data-url="{% url 'portfolio_detail' slug='web-design-project' %}">
+            <!-- <img src="portfolio-item3.jpg" alt="Project C"> -->
+            <h3>Web Design Project</h3>
+            <p>Revolutionize your online presence with our state-of-the-art web design. Elevate aesthetics, enhance functionality, and captivate audiences with a digital experience that sets new standards. Stay ahead in the digital landscape with our cutting-edge design solutions.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const clickableItems = document.querySelectorAll(".clickable");
+
+        clickableItems.forEach(item => {
+            item.addEventListener("click", function () {
+                const url = this.getAttribute("data-url");
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+</script>
 
 
 
-{% endblock content %}
+
+
+{% endblock %}

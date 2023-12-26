@@ -35,9 +35,14 @@ SECRET_KEY = env.str(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = env.bool("DEBUG", default=False)  # new
+# DEBUG = True
 DEBUG = False
 ALLOWED_HOSTS = ["*"]  
-# CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]  
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'd6c5a94defa341'
+EMAIL_HOST_PASSWORD = 'aa4192908eede7'
+EMAIL_PORT = '2525'
 
 
 # Application definition
@@ -45,6 +50,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'jet',
     'pages',
+    'contact',
     'portfolio',
     'services',
     'ckeditor',

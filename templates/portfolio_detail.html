@@ -1,57 +1,53 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <div class="container mx-auto p-4">
-  <h1 class="text-3xl font-bold mb-4">{{ object.title }}</h1>
+    <div class="content bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold mb-4 text-center">{{ portfolio.title }}</h1>
 
-  <div class="content bg-white p-8 rounded-lg shadow-md">
-    {{ object.body|safe }}
-  </div>
+        <!-- Additional Images Carousel -->
+        {% if portfolio.images.exists %}
+            <div class="additional-images mt-4">
+                <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for image in portfolio.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" alt="{{ portfolio.title }}" class="d-block w-100 img-fluid rounded">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
 
-  <a href="{% url 'portfolio' %}" class="btn btn-secondary mt-4">Back to Portfolio</a>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var myCarousel = new bootstrap.Carousel(document.getElementById('imageCarousel'), {
+                            interval: 3000,
+                            wrap: true
+                        });
+                    });
+                </script>
+            </div>
+        {% endif %}
+
+        <!-- Portfolio Details -->
+        <div class="mt-4">
+            <h3 class="text-center mb-3">Project Details:</h3>
+            <p>{{ portfolio.details|safe }}</p>
+        </div>
+
+        <!-- Back to Portfolio Button -->
+        <div class="text-center mt-4">
+            <a href="{% url 'portfolio' %}" class="btn btn-secondary">Back to Portfolio</a>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}
-
-{% block styles %}
-<style>
-  /* Basic Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: sans-serif;
-    background-color: #f4f4f4;
-    line-height: 1.6;
-  }
-
-  /* Container */
-  .container {
-    max-width: 960px; /* Adapt for larger screens */
-  }
-
-  /* Content Styling */
-  .content {
-    font-size: 16px;
-    color: #333;
-  }
-
-  /* Button Styling */
-  .btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .btn:hover {
-    background-color: #0062cc;
-  }
-</style>
-{% endblock styles %}

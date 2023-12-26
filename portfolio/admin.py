@@ -1,8 +1,13 @@
+# admin.py
 from django.contrib import admin
+from .models import Portfolio, PortfolioImage
 
-from .models import PortFolio
+class PortfolioImageInline(admin.TabularInline):
+    model = PortfolioImage
+    extra = 1
 
-class PortFolioAdmin(admin.ModelAdmin):
-    list_display = ("title", "body",)
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ("title", "short_detail", "details")  # Update the fields to display in the list view
+    inlines = [PortfolioImageInline]  # Add the inline for PortfolioImage
 
-admin.site.register(PortFolio, PortFolioAdmin)
+admin.site.register(Portfolio, PortfolioAdmin)

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Add your custom styles for the contact form here */
+
+    #contact-us {
+        background-color: #f0f8ff;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0;
+        font-size: 14px;
+        color: #555;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin: 6px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #4CAF50;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 15px auto;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            const name = document.getElementById('id_name').value.trim();
+            const email = document.getElementById('id_email').value.trim();
+            const content = document.getElementById('id_message').value.trim();
+
+            if (!name || !email || !content) {
+                event.preventDefault();
+                alert('Please fill out all required fields');
+            }
+        });
+    });
+</script>
+
+<section id="contact-us">
+    <h2>Contact Us</h2>
+    <form method="post" action="{% url 'contact' %}" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number">
+        
+        <select name="service" required>
+            <option value="" disabled selected>What services are you looking for?</option>
+            <option value="web_design">Web Design</option>
+            <option value="web_design">Artificial Intelligence</option>
+            <option value="seo">SEO</option>
+            <option value="digital_marketing">Digital Marketing</option>
+            <option value="graphic_design">Graphic Design</option>
+            <!-- Add more services as needed -->
+        </select>
+
+        <select name="find_us" required>
+            <option value="" disabled selected>How did you find us?</option>
+            <option value="google">Google</option>
+            <option value="social_media">Social Media</option>
+            <option value="word_of_mouth">Word of Mouth</option>
+            <option value="other">Other</option>
+        </select>
+
+        <textarea name="message" placeholder="Your Message" rows="4"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+{% endblock content %}
