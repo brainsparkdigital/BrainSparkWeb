@@ -113,7 +113,7 @@
 
     /* About section */
     .abouthome {
-        background-color: #e8e8e8;
+        background-color: #d8edeb;
         padding: 40px 20px;
         text-align: center;
     }
@@ -130,7 +130,7 @@
 
         /* Portfolio section */
         #portfolio {
-            background-color: #f9f9f9;
+            background-color: #9bbad1;
             padding: 60px 20px;
             text-align: center;
         }
@@ -179,6 +179,80 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
+
+
+        /* Enhanced Blog Section */
+        #blog {
+            background-color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #blog h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .blog-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .blog-item {
+            background-color: #f9f9f9;
+            width: 80%; /* Set width */
+            max-width: 800px; /* Maximum width */
+            margin: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .blog-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .blog-item h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .blog-item p {
+            font-size: 16px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .blog-item a {
+            text-decoration: none;
+            color: #0267C1;
+            font-weight: bold;
+        }
+
+        .blog-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design for Blog Section */
+        @media (max-width: 768px) {
+            .blog-item {
+                width: 100%; /* Full width on smaller screens */
+            }
+    
 </style>
 
 <section class="hero">
@@ -244,6 +318,12 @@
     </div>
 </section>
 
+
+
+
+
+
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const clickableItems = document.querySelectorAll(".clickable");
@@ -261,6 +341,19 @@
 
 
 
-
+<!-- Enhanced Blog Section -->
+<section id="blog">
+    <h2>Latest From Our Blog</h2>
+    <div class="blog-items">
+        <div class="blog-item">
+            {% comment %} <img src="blog-post1.jpg" alt="Blog Post 1"> {% endcomment %}
+            <h3>Artificial Intelligence: In Path of AGI</h3>
+            <p>In the realm of technological evolution, one of the most compelling and rapidly advancing areas is Artificial Intelligence (AI). From simple machine learning algorithms to sophisticated neural networks, AI has continuously broken the boundaries of what machines can achieve.</p>
+            <a href="blog/artificial-intelligence-in-path-of-agi/">Read More</a>
+        </div>
+</section>
 
 {% endblock %}
+
+
+

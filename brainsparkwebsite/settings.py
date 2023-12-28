@@ -50,6 +50,7 @@ EMAIL_PORT = '2525'
 INSTALLED_APPS = [
     'jet',
     'pages',
+    'blog',
     'contact',
     'portfolio',
     'services',
